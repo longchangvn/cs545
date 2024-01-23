@@ -10,7 +10,7 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import cs545.labs.lab4.anotations.*;
+import cs545.labs.lab5.anotations.*;
 import org.springframework.util.StopWatch;
 
 import java.time.LocalDate;
@@ -26,7 +26,7 @@ public class TransactionLogAop {
     @Autowired
     ExceptionLogRepo exRepo;
 
-    @After("execution(public * cs545.labs.lab4.*.*.*(..))")
+    @After("execution(public * cs545.labs.lab5.*.*.*(..))")
     public void log(JoinPoint point) {
         var tran = new TransactionLog();
         tran.setDate(LocalDate.now());
@@ -53,7 +53,7 @@ public class TransactionLogAop {
         return result;
     }
 
-    @AfterThrowing(value = "execution(* cs545.labs.lab4.*.*.*(..))", throwing = "exception")
+    @AfterThrowing(value = "execution(* cs545.labs.lab5.*.*.*(..))", throwing = "exception")
     public void logException(JoinPoint point,Exception exception) {
 
         var ex = new ExceptionLog();
