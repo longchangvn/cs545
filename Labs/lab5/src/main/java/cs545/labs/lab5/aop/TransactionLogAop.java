@@ -1,9 +1,9 @@
-package cs545.labs.lab4.aop;
+package cs545.labs.lab5.aop;
 
-import cs545.labs.lab4.domain.ExceptionLog;
-import cs545.labs.lab4.domain.TransactionLog;
-import cs545.labs.lab4.repository.ExceptionLogRepo;
-import cs545.labs.lab4.repository.TransactionLogRepo;
+import cs545.labs.lab5.domain.ExceptionLog;
+import cs545.labs.lab5.domain.TransactionLog;
+import cs545.labs.lab5.repository.ExceptionLogRepo;
+import cs545.labs.lab5.repository.TransactionLogRepo;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -35,7 +35,7 @@ public class TransactionLogAop {
         tran.setOperation(point.getSignature().getName());
         repo.save(tran);
     }
-    @Around("@annotation(cs545.labs.lab4.anotations.LogExecutionTime)")
+    @Around("@annotation(cs545.labs.lab5.anotations.LogExecutionTime)")
     public Object logTime(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
         StopWatch watch = new StopWatch();
