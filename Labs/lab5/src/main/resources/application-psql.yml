@@ -19,6 +19,8 @@ spring:
   sql:
     init:
       mode: always
+  aop:
+    proxy-target-class: true
 logging:
   level:
     root: info

@@ -25,8 +25,11 @@ public class TransactionLogAop {
 
     @Autowired
     ExceptionLogRepo exRepo;
-
-    @After("execution(public * cs545.labs.lab5.*.*.*(..))")
+    @Pointcut("execution(public * cs545.labs.lab5.*.*.*(..)) && !execution(public * cs545.labs.lab5.config.*.*(..))")
+    private void excludePackage() {
+        // This method has no body, it's just a placeholder for the pointcut expression
+    }
+    @After("excludePackage()")
     public void log(JoinPoint point) {
         var tran = new TransactionLog();
         tran.setDate(LocalDate.now());
@@ -53,7 +56,7 @@ public class TransactionLogAop {
         return result;
     }
 
-    @AfterThrowing(value = "execution(* cs545.labs.lab5.*.*.*(..))", throwing = "exception")
+    @AfterThrowing(value = "excludePackage()", throwing = "exception")
     public void logException(JoinPoint point,Exception exception) {
 
         var ex = new ExceptionLog();
