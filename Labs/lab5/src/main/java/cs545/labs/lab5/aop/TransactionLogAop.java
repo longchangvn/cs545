@@ -25,7 +25,7 @@ public class TransactionLogAop {
 
     @Autowired
     ExceptionLogRepo exRepo;
-    @Pointcut("execution(public * cs545.labs.lab5.*.*.*(..)) && !execution(public * cs545.labs.lab5.config.*.*(..))")
+    @Pointcut("execution(public * cs545.labs.lab5.controller.*.*(..)) && !execution(public * cs545.labs.lab5.config.*.*(..))")
     private void excludePackage() {
         // This method has no body, it's just a placeholder for the pointcut expression
     }
