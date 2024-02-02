@@ -1,0 +1,14 @@
+.post{
+    width: 200px;
+
+}
+
+.post button{
+    font-weight: bold;
+    background-color: blanchedalmond;
+}
+.posts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
